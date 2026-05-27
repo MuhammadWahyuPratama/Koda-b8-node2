@@ -1,18 +1,10 @@
 import readline from "node:readline";
-import moment from "moment";
+import { formatDate } from "./utils/formatDate.js";
 
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout,
 });
-
-export function formatDate(tanggal) {
- const benar = moment(tanggal, "DD-MM-YYYY",true);
- if (!benar.isValid()) {
-  return null;
-}
-return benar.format("DD/MM/YYYY");
-};
 
 rl.question("Masukan tanggal dengan format (DD-MM-YYYY): ", (tanggal) => {
   const hasil = formatDate(tanggal);
