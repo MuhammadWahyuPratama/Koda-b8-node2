@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert";
-import {formatDate} from "../index.js";
+import { formatDate } from "../utils/formatDate.js";
 
 test("should return formatted date", () => {
   assert.strictEqual(
