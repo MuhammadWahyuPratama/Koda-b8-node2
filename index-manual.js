@@ -4,22 +4,30 @@ const rl = readline.createInterface({
   output: process.stdout,
 });
 
-rl.question("Masukan Tanggal dengan Format (DD-MM-YYYY) :", (tanggal) => {
-  const pemisah = tanggal.split("-");
-
-  if (pemisah.length !== 3) {
-    console.log("Format Tanggal Salah!!");
-    rl.close();
-    return;
-  }
+export function formatManualDate (tanggal) {
+ const pemisah = tanggal.split("-");
+if(pemisah.length !== 3) {
+  return null;
+}
   const hari = pemisah[0];
   const bulan = pemisah[1];
   const tahun = pemisah[2];
 
-  if (hari.length !== 2 || bulan.length !== 2 || tahun.length !== 4) {
-    console.log("Format Tanggal Salah");
+if (hari.length !==2 ||
+    bulan.length !==2 ||
+    tahun.length !==4 
+) {
+  return null;
+}
+return `${hari}/${bulan}/${tahun}`;
+}
+
+rl.question("Masukan Tanggal dengan Format (DD-MM-YYYY) :", (tanggal) => {
+  const hasil = formatManualDate(tanggal);
+  if (hasil) {
+    console.log(`Tanggal : ${hasil}`);
   } else {
-    console.log(`Tanggal : ${hari}/${bulan}/${tahun}`);
+    console.log("Format Tanggal Salah");
   }
   rl.close();
 });
